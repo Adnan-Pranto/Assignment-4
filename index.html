@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <!--Header and Menu Section-->
+        <header class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a class="active" href="#">Sign Up</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <!--Booking Section-->
+        <main class="main-content container">
+            <section id="first-page">
+                <div class="booking-form ">
+                    <h3>Booking Flights</h3>
+                    <div class="input-group">
+                        <label for="">Flying From</label>
+                        <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Flying To</label>
+                        <input class="inp-style" type="text" name="" placeholder="New York, United States">
+                    </div>
+                    <div class="inputs">
+                        <div class="input-group">
+                            <label" for="">Departure</label>
+                                <input class="inp-style" type="date" name="">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Return</label>
+                            <input class="inp-style" type="date" name="">
+                        </div>
+                    </div>
+                    <div class="input-group f-class">
+                        <div>
+                            <label id="first-zone" for="">First Class ($150)</label>
+                            <input id="first-Cl" class="inp-style inp-width" value="1">
+
+                        </div>
+                        <div class="plus-minus-btn">
+
+                            <p style="color: blue;"> <span onclick=" purchaseFirstclassTicket(true)">+</span> <span onclick="purchaseFirstclassTicket(false)">-</span> </p>
+
+                        </div>
+                    </div>
+
+                    <div class="input-group f-class">
+                        <div>
+                            <label for="">Economy ($100)</label>
+                            <input class="inp-style inp-width" value="1">
+                        </div>
+                        <div class="plus-minus-btn">
+
+
+                            <p style="color: blue;"> <span>+</span> <span>-</span> </p>
+                        </div>
+                    </div>
+                    <div class="calculations">
+                        <div class="amount">
+                            <div class="left">
+                                <p>Subtotal</p>
+                            </div>
+                            <div class="right">
+                                <p>$500</p>
+                            </div>
+                        </div>
+
+                        <div class="amount">
+                            <div class="left">
+                                <p>Charge 10% VAT</p>
+                            </div>
+                            <div class="right">
+                                <p>$50</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="amount">
+                            <div class="left">
+                                <h4>Total</h4>
+                            </div>
+                            <div class="right">
+                                <p>$550</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="nextpage" class="btn btn-style"> Book Now </button>
+
+                </div>
+
+            </section>
+
+            <div class="booking-content">
+                <h1>discover <br> around the world</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                    veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt
+                    nobise voluptatibus quam</p>
+            </div>
+
+
+
+            <section id="next-page">
+                <div class="booking-form ">
+                    <h2> Congratulation</h2>
+                    <h3> Your payment is successfully Complete</h3>
+                    <div class="booking-form ">
+                        <!-- <p id="first-zone">first-class Ticket $</p> <br>
+                        <p id="economy-zone"> Economy Ticket</p> -->
+                    </div>
+                </div>
+
+            </section>
+
+    </section>
+
+    <script>
+        const newPage = document.getElementById("nextpage");
+        newPage.addEventListener("click", function () {
+            const newArea = document.getElementById("first-page");
+            newArea.style.display = "none";
+            const confarmationText = document.getElementById("next-page");
+            confarmationText.style.display = "block";
+
+        });
+        
+        function purchaseFirstclassTicket(isIncrease) {
+            const tickInput = document.getElementById('first-Cl');
+            const tickCount = parseInt(tickInput.value);
+            //const tickNewCount = tickCount + 1; 
+            let tickNewCount = tickCount;
+            if (isIncrease == true) {
+                tickNewCount = tickCount + 1;
+            }
+            else if (isIncrease == false && tickCount > 0 ) {
+                tickNewCount = tickCount - 1;
+            }
+            tickInput.value = tickNewCount;
+            var cashTotal = tickNewCount * 150;
+            document.getElementById('first-zone').innerText = 'First Class ($' + cashTotal + ')';
+        }
+    </script>
+</body>
+
+</html>
