@@ -122,5 +122,10 @@ nav ul li a:hover, a.active{
 #next-page {
     display: none;
 }
-
-
+#next-page{
+    background-color: cornsilk;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 5px;
+    float: left;
+}

@@ -59,20 +59,22 @@
                         </div>
                         <div class="plus-minus-btn">
 
-                            <p style="color: blue;"> <span onclick=" purchaseFirstclassTicket(true)">+</span> <span onclick="purchaseFirstclassTicket(false)">-</span> </p>
+                            <p style="color: blue;"> <span onclick=" purchaseFirstclassTicket(true)">+</span> <span
+                                    onclick="purchaseFirstclassTicket(false)">-</span> </p>
 
                         </div>
                     </div>
 
                     <div class="input-group f-class">
                         <div>
-                            <label for="">Economy ($100)</label>
-                            <input class="inp-style inp-width" value="1">
+                            <label id="economy-zone" for="">Economy ($100)</label>
+                            <input id="economy-Cl" class="inp-style inp-width" value="1">
                         </div>
                         <div class="plus-minus-btn">
 
 
-                            <p style="color: blue;"> <span>+</span> <span>-</span> </p>
+                            <p style="color: blue;"> <span onclick="purchaseEconomyclassTicket(true) ">+</span> <span
+                                   onclick="purchaseEconomyclassTicket(false)">-</span> </p>
                         </div>
                     </div>
                     <div class="calculations">
@@ -81,7 +83,7 @@
                                 <p>Subtotal</p>
                             </div>
                             <div class="right">
-                                <p>$500</p>
+                                <p id="subtotal">$250</p>
                             </div>
                         </div>
 
@@ -90,7 +92,7 @@
                                 <p>Charge 10% VAT</p>
                             </div>
                             <div class="right">
-                                <p>$50</p>
+                                <p id="tax-amount">$25</p>
                             </div>
                         </div>
                         <hr>
@@ -99,7 +101,7 @@
                                 <h4>Total</h4>
                             </div>
                             <div class="right">
-                                <p>$550</p>
+                                <p id="grand-total">$275</p>
                             </div>
                         </div>
                     </div>
@@ -116,21 +118,20 @@
                     nobise voluptatibus quam</p>
             </div>
 
-
+        
 
             <section id="next-page">
                 <div class="booking-form ">
-                    <h2> Congratulation</h2>
-                    <h3> Your payment is successfully Complete</h3>
+                    <h2 style="font-size: 34px; color: rgb(212, 25, 41);"> Congratulation..!!</h2>
+                    <h3 style="font-size: 26px; color: coral;"> Your payment is successfully Complete</h3>
                     <div class="booking-form ">
-                        <!-- <p id="first-zone">first-class Ticket $</p> <br>
-                        <p id="economy-zone"> Economy Ticket</p> -->
+                    <p></p>
                     </div>
                 </div>
 
             </section>
 
-    </section>
+        </section>    
 
     <script>
         const newPage = document.getElementById("nextpage");
@@ -141,23 +142,55 @@
             confarmationText.style.display = "block";
 
         });
-        
+
+            // function for first class
         function purchaseFirstclassTicket(isIncrease) {
             const tickInput = document.getElementById('first-Cl');
-            const tickCount = parseInt(tickInput.value);
-            //const tickNewCount = tickCount + 1; 
+            const tickCount = parseInt(tickInput.value); 
             let tickNewCount = tickCount;
             if (isIncrease == true) {
                 tickNewCount = tickCount + 1;
             }
-            else if (isIncrease == false && tickCount > 0 ) {
+          else  if (isIncrease == false && tickCount > 0) {
                 tickNewCount = tickCount - 1;
             }
             tickInput.value = tickNewCount;
             var cashTotal = tickNewCount * 150;
             document.getElementById('first-zone').innerText = 'First Class ($' + cashTotal + ')';
+            addSubtotal();
         }
+
+        // function for Economy class
+        
+        function purchaseEconomyclassTicket(isIncrease){
+            const tickInput = document.getElementById('economy-Cl');
+            const tickCount = parseInt(tickInput.value);
+            let tickNewEcomomy = tickCount;
+            if (isIncrease == true) {
+                tickNewEcomomy = tickCount + 1;
+            }
+          else  if (isIncrease == false && tickCount > 0) {
+            tickNewEcomomy = tickCount - 1;
+            }
+            tickInput.value = tickNewEcomomy;
+            var totalAmount = tickNewEcomomy * 100;
+            document.getElementById('economy-zone').innerText = 'First Class ($' + totalAmount + ')';
+            addSubtotal();
+        } 
+       function addSubtotal(){
+           const   firstClas = document.getElementById('first-Cl');
+           const firstCount = parseInt(firstClas.value);
+
+           const ecoClas = document.getElementById('economy-Cl');
+           const ecoCount = parseInt(ecoClas.value);
+           let totalprice = firstCount * 150 + ecoCount * 100 ;
+           document.getElementById('subtotal').innerText = '$'+totalprice;
+           let tax = totalprice* 0.1;
+           document.getElementById('tax-amount').innerText = '$'+tax;
+           let grandTotal = tax + totalprice;
+           document.getElementById('grand-total').innerText= '$'+grandTotal;
+       }
     </script>
-</body>
+</body>  
 
 </html>
